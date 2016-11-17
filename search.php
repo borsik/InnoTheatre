@@ -21,6 +21,30 @@
 </head>
 <body>
 
+<script>
+function showTheatres(value){
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		if(this.readyState == 4 && this.status == 200){
+			document.getElementById("theatre-select").innerHTML = this.responseText;
+		}
+	};
+	xmlhttp.open("GET", "showTheatres.php?t=" + value, true);
+	xmlhttp.send();
+}
+
+function showPerfomances(value){
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		if(this.readyState == 4 && this.status == 200){
+			document.getElementById("perf-select").innerHTML = this.responseText;
+		}
+	};
+	xmlhttp.open("GET", "showPerfomances.php?t=" + value, true);
+	xmlhttp.send();
+}
+</script>
+
 <div class="container-fluid">
     <div class="row text-left">
         <div class="col-md-3"></div>
@@ -28,10 +52,22 @@
             <h2>Find plays</h2>
             <div class="form-group">
                 <label for="city-select">City: </label>
-                <select class="form-control" id="city-select">
-					<option>1</option>
-                    <option>2</option>
-                    <option>3</option>
+                <select class="form-control" id="city-select" onchange="showTheatres(this.value); 
+																		showPerfomances(this.value);">
+				<?php
+						$db_theatres = pg_connect("host=localhost port=5432 dbname=Theatres user=postgres password=1234");
+						
+						if(!$db_theatres){
+							echo'No connection :(';
+						}
+						echo'<option value="">Select city, please...</option>';
+						$query = "SELECT DISTINCT T.city FROM theater T";
+						$result = pg_query($db_theatres, $query);
+						while($row = pg_fetch_row($result)){
+							echo '<option value="'.$row[0].'">' .$row[0].' </option> ';
+						}
+						pg_close($db_theatres);
+					?>
                 </select>
             </div>
             <ul  class="nav nav-pills">
@@ -46,9 +82,7 @@
                     <div class="form-group">
                         <label for="theatre-select">Theatres: </label>
                         <select class="form-control" id="theatre-select">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
+
                         </select>
                     </div>
                 </div>
@@ -56,9 +90,7 @@
                     <div class="form-group">
                         <label for="perf-select">Performances: </label>
                         <select class="form-control" id="perf-select">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
+
                         </select>
                     </div>
                 </div>
