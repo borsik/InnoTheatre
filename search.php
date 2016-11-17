@@ -137,8 +137,8 @@ function showPerfomances(value){
     </div>
 	
 	<script>
-		$('#date-from').datepicker({});
-		$('#date-to').datepicker({});
+		$('#date-from').datepicker().datepicker("setDate", new Date());
+		$('#date-to').datepicker().datepicker("setDate", new Date(+new Date + 12096e5));
 	</script>
 </div>
 
