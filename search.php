@@ -104,7 +104,7 @@ function showPerfomances(value){
                 <input type="text" id="date-to">
             </div>
             <div class="form-group">
-                <label>В дни:</label>
+                <label>Weekdays:</label>
                 <label class="checkbox-inline"><input type="checkbox" value="">Mon</label>
                 <label class="checkbox-inline"><input type="checkbox" value="">Tue</label>
                 <label class="checkbox-inline"><input type="checkbox" value="">Wed</label>
