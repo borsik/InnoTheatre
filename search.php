@@ -115,7 +115,7 @@ function showPerfomances(value){
             </div>
             <div class="form-group">
                 <label for="member">Participated:</label>
-                <select class="selectpicker" multiple id="member">
+                <select multiple class="form-control" multiple id="member">
                     <optgroup label="Актеры">
                         <option>Сергей Бодров</option>
                         <option>Данила Козловский</option>
