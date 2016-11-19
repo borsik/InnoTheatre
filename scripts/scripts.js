@@ -43,6 +43,6 @@ function showActors(value) {
 			document.getElementById("member-select").innerHTML = this.responseText;
 		}
 	};
-	xmlhttp.open("GET", "showPerfomances.php?t=" + value, true);
+	xmlhttp.open("GET", "showPeopleInTheatre.php?t=" + value, true);
 	xmlhttp.send();
 }

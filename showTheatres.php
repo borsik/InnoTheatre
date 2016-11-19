@@ -7,10 +7,10 @@
 		echo'No connection :(';
 	}
 	$return = '<option value="">Select theatre, please...</option> ';
-	$query = "SELECT DISTINCT T.name FROM theater T WHERE city = '".$t."'";
+	$query = "SELECT DISTINCT T.name, T.tid FROM theater T WHERE city = '".$t."'";
 	$result = pg_query($db_theatres, $query);
 	while($row = pg_fetch_row($result)){
-		$return = $return.'<option value="'.$row[0].'">' .$row[0].' </option> ';
+		$return = $return.'<option value="'.$row[1].'">' .$row[0].' </option> ';
 	}
 	pg_close($db_theatres);
 	

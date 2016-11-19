@@ -7,14 +7,14 @@
 		echo'No connection :(';
 	}
 	$return = '<option value="">Select performance, please...</option> ';
-	$query = "SELECT per.per_name 
+	$query = "SELECT DISTINCT per.per_name, per.per_id
 			FROM play p
 			INNER JOIN theater t ON p.tid = t.tid
 			INNER JOIN performance per ON per.per_id=p.per_id
 			WHERE t.city='".$t."'";
 	$result = pg_query($db_theatres, $query);
 	while($row = pg_fetch_row($result)){
-		$return = $return.'<option value="'.$row[0].'">' .$row[0].' </option> ';
+		$return = $return.'<option value="'.$row[1].'">' .$row[0].' </option> ';
 	}
 	pg_close($db_theatres);
 	
