@@ -25,35 +25,23 @@
   </head>
 
   <body>
-
-	<div class="container">
-		<nav class="navbar navbar-light bg-faded">
+  
+	  <nav class="navbar navbar-light bg-faded">
 			<a class="navbar-brand" href="./index.php">Navbar</a>
 			<ul class="nav navbar-nav" id="navigation">
-				<li class="nav-item active">
+				<li class="nav-item">
 					<a class="nav-link" href="./index.php">Home <span class="sr-only">(current)</span></a>
 				</li>
-				<li class="nav-item">
+				<li class="nav-item active">
 					<a class="nav-link" href="./future.php">Future events</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="./latest.php">Latest events</a>
 				</li>
 			</ul>
-			
-
+		
+		
 		</nav>
-	</div>
-    <div class="container" id="home">
-		<div class="jumbotron">
-			<h1>Welcome</h1>
-			<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
-			<button type="submit" class="btn btn-primary">Find future events</button>
-		</div>
-    </div>
-	
-	
-	
-    
+  
   </body>
 </html>

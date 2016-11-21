@@ -25,36 +25,29 @@
   </head>
 
   <body>
-
-	<nav class="navbar navbar-light bg-faded">
-		<a class="navbar-brand" href="#">Navbar</a>
-		<ul class="nav navbar-nav" id="navigation">
-			<li class="nav-item active">
-				<a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#future">Future events</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#latest">Latest events</a>
-			</li>
-		</ul>
+  <div class="container">
+	  <nav class="navbar navbar-light bg-faded">
+			<a class="navbar-brand" href="./index.php">Navbar</a>
+			<ul class="nav navbar-nav" id="navigation">
+				<li class="nav-item">
+					<a class="nav-link" href="./index.php">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="#future">Future events</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="./latest.php">Latest events</a>
+				</li>
+			</ul>
+			
 		
-	
-	</nav>
-
-    <div class="container" id="home">
-		<div class="jumbotron">
-			<h1>Welcome</h1>
-			<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
-			<button type="submit" class="btn btn-primary">Find future events</button>
-		</div>
-    </div>
+		</nav>
+	</div>
 	
 	<div class="container" id="future">
 		<div class="row text-left">
-			<div class="col-md-3"></div>
-			<div class="col-md-6">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
 				<h2>Find plays</h2>
 				<div class="form-group">
 					<label for="city-select">City: </label>
@@ -98,19 +91,21 @@
 					<div class="tab-pane" id="2a" role="tabpanel">
 						<div class="form-group">
 							<label for="perf-select">Performances: </label>
-							<select class="form-control" id="perf-select" onchange="">
+							<select class="form-control" id="perf-select" onchange="showActors(this.value)">
 
 							</select>
 						</div>
 					</div>
 				</div>
-				<div class="form-group">
-					<label for="date-from">From:</label>
-					<input type="text" id="date-from">
-				</div>
-				<div class="form-group">
-					<label for="date-to">To:</label>
-					<input type="text" id="date-to">
+				<div class="form-group row">
+					<label for="date-from" class="col-md-1">From:</label>
+					<div class="col-md-3">
+						<input type="text" id="date-from" class="form-control">
+					</div>
+					<label for="date-to" class="col-md-1">To:</label>
+					<div class="col-md-3">
+						<input type="text" id="date-to" class="form-control">
+					</div>
 				</div>
 				<div class="form-group">
 					<label>Weekdays:</label>
@@ -125,7 +120,7 @@
 				<div class="form-group">
 					<label for="member-select">Participated:</label>
 					<select multiple class="form-control" multiple id="member-select">
-
+						
 					</select>       
 				</div>
 				
@@ -133,7 +128,7 @@
 					<button type="button" class="btn btn-default" id="search">Search</button>
 				</div>
 			</div>
-			<div class="col-md-3"></div>
+			<div class="col-md-2"></div>
 		</div>
 	
 	</div>

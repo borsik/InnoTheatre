@@ -2,9 +2,10 @@
 $( function() {
     $('#date-from').datepicker().datepicker("setDate", new Date());
 	$('#date-to').datepicker().datepicker("setDate", new Date(+new Date + 12096e5));
-	
-	$('#perf-tab a[href="#2a"]').tab('show')
+$('#future-nav').click(function(){$("#future").hide();});
   } );
+  
+  	
   
 $("#navigation a").on('click', function(e) {
 	e.preventDefault();
