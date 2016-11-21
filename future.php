@@ -89,10 +89,10 @@
 								</select>
 							</div>
 						</div>
-						<div class="tab-pane fade" id="performances" role="tabpanel" aria-expanded="false">
-							<div class="form-group">
-								<label for="perf-select">Performances:</label>
-								<select class="form-control" id="perf-select" onchange="showActors(this.value)">
+					<div class="tab-pane fade" id="performances" role="tabpanel" aria-expanded="false">
+						<div class="form-group">
+							<label for="perf-select">Performances:</label>
+							<select class="form-control" id="perf-select" onchange="showActorsInPerfomance(this.value)">
 
 								</select>
 							</div>
