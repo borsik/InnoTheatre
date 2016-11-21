@@ -30,7 +30,7 @@
 			<a class="navbar-brand" href="./index.php">Navbar</a>
 			<ul class="nav navbar-nav" id="navigation">
 				<li class="nav-item">
-					<a class="nav-link" href="./index.php">Home <span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="./index.php">Home<span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item active">
 					<a class="nav-link" href="#future">Future events</a>
@@ -70,27 +70,27 @@
 					</select>
 				</div>
 				
-				<ul  class="nav nav-tabs" role="tablist">
+				<ul  class="nav nav-tabs" role="tablist" id="myTab">
 					<li class="nav-item">
-						<a class="nav-link active" href="#1a" data-toggle="tab" role="tab" id="theater-tab">Theatres</a>
+						<a class="nav-link active" href="#theater" data-toggle="tab" role="tab" id="theater-tab" aria-controls="theater">Theatres</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#2a" data-toggle="tab" role="tab" id="perf-tab">Performances</a>
+						<a class="nav-link" href="#performances" data-toggle="tab" role="tab" id="perf-tab" aria-controls="performances">Performances</a>
 					</li>
 				</ul>
 				
-				<div class="tab-content">
-					<div class="tab-pane active" id="1a" role="tabpanel">
+				<div class="tab-content" id="myTabContent">
+					<div class="tab-pane fade active in" id="theater" role="tabpanel" aria-expanded="true">
 						<div class="form-group">
-							<label for="theatre-select">Theatres: </label>
+							<label for="theatre-select">Theatres:</label>
 							<select class="form-control" id="theatre-select" onchange="showActors(this.value)">
 
 							</select>
 						</div>
 					</div>
-					<div class="tab-pane" id="2a" role="tabpanel">
+					<div class="tab-pane fade" id="performances" role="tabpanel" aria-expanded="false">
 						<div class="form-group">
-							<label for="perf-select">Performances: </label>
+							<label for="perf-select">Performances:</label>
 							<select class="form-control" id="perf-select" onchange="showActors(this.value)">
 
 							</select>

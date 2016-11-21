@@ -5,7 +5,9 @@ $( function() {
 $('#future-nav').click(function(){$("#future").hide();});
   } );
   
-  	
+$(function () {
+    $('#my-tab a:last').tab('show')
+  });
   
 $("#navigation a").on('click', function(e) {
 	e.preventDefault();
