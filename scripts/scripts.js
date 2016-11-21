@@ -49,3 +49,13 @@ function showActors(value) {
 	xmlhttp.open("GET", "showPeopleInTheatre.php?t=" + value, true);
 	xmlhttp.send();
 }
+function showActorsInPerfomance(value) {
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		if(this.readyState == 4 && this.status == 200){
+			document.getElementById("member-select").innerHTML = this.responseText;
+		}
+	};
+	xmlhttp.open("GET", "showPeopleInPerformance.php?t=" + value, true);
+	xmlhttp.send();
+}

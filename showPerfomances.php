@@ -7,7 +7,7 @@
 		echo'No connection :(';
 	}
 	$return = '<option value="">Select performance, please...</option> ';
-	$query = "SELECT DISTINCT per.per_name, per.per_id
+	$query = "SELECT DISTINCT per.name, per.per_id
 			FROM play p
 			INNER JOIN theater t ON p.tid = t.tid
 			INNER JOIN performance per ON per.per_id=p.per_id
