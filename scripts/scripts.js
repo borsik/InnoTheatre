@@ -5,10 +5,16 @@ $( function() {
 $('#future-nav').click(function(){$("#future").hide();});
   } );
   
-$(function () {
-    $('#my-tab a:last').tab('show')
-  });
-  
+jQuery(function () {
+    jQuery('#myTab a:last').tab('show')
+});
+
+jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.location = $(this).data("href");
+    });
+});
+
 $("#navigation a").on('click', function(e) {
 	e.preventDefault();
 	$('.container').hide();

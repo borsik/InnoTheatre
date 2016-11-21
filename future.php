@@ -49,83 +49,114 @@
 			<div class="col-md-2"></div>
 			<div class="col-md-8">
 				<h2>Find plays</h2>
-				<div class="form-group">
-					<label for="city-select">City: </label>
-					<select class="form-control" id="city-select" onchange="showTheatres(this.value); 
-																			showPerfomances(this.value);">
-						<?php
-							$db_theatres = pg_connect("host=localhost port=5432 dbname=Theatres user=postgres password=1234");
+				<div>
+					<div class="form-group">
+						<label for="city-select">City: </label>
+						<select class="form-control" id="city-select" onchange="showTheatres(this.value); 
+																				showPerfomances(this.value);">
+							<?php
+								$db_theatres = pg_connect("host=localhost port=5432 dbname=Theatres user=postgres password=1234");
+								
+								if(!$db_theatres){
+									echo'No connection :(';
+								}
+								echo'<option value="">Select city, please...</option>';
+								$query = "SELECT DISTINCT T.city FROM theater T";
+								$result = pg_query($db_theatres, $query);
+								while($row = pg_fetch_row($result)){
+									echo '<option value="'.$row[0].'">' .$row[0].' </option> ';
+								}
+								pg_close($db_theatres);
+							?>
+						</select>
+					</div>
+					
+					<ul  class="nav nav-tabs" role="tablist" id="myTab">
+						<li class="nav-item">
+							<a class="nav-link active" href="#theater" data-toggle="tab" role="tab" id="theater-tab" aria-controls="theater">Theatres</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#performances" data-toggle="tab" role="tab" id="perf-tab" aria-controls="performances">Performances</a>
+						</li>
+					</ul>
+					
+					<div class="tab-content" id="myTabContent">
+						<div class="tab-pane fade active in" id="theater" role="tabpanel" aria-expanded="true">
+							<div class="form-group">
+								<label for="theatre-select">Theatres:</label>
+								<select class="form-control" id="theatre-select" onchange="showActors(this.value)">
+
+								</select>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="performances" role="tabpanel" aria-expanded="false">
+							<div class="form-group">
+								<label for="perf-select">Performances:</label>
+								<select class="form-control" id="perf-select" onchange="showActors(this.value)">
+
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="date-from" class="col-md-1">From:</label>
+						<div class="col-md-3">
+							<input type="text" id="date-from" class="form-control">
+						</div>
+						<label for="date-to" class="col-md-1">To:</label>
+						<div class="col-md-3">
+							<input type="text" id="date-to" class="form-control">
+						</div>
+					</div>
+					<div class="form-group">
+						<label>Weekdays:</label>
+						<label class="checkbox-inline"><input type="checkbox" value="">Mon</label>
+						<label class="checkbox-inline"><input type="checkbox" value="">Tue</label>
+						<label class="checkbox-inline"><input type="checkbox" value="">Wed</label>
+						<label class="checkbox-inline"><input type="checkbox" value="">Thu</label>
+						<label class="checkbox-inline"><input type="checkbox" value="">Fri</label>
+						<label class="checkbox-inline"><input type="checkbox" value="">Sat</label>
+						<label class="checkbox-inline"><input type="checkbox" value="">Sun</label>        
+					</div>
+					<div class="form-group">
+						<label for="member-select">Participated:</label>
+						<select multiple class="form-control" multiple id="member-select">
 							
-							if(!$db_theatres){
-								echo'No connection :(';
-							}
-							echo'<option value="">Select city, please...</option>';
-							$query = "SELECT DISTINCT T.city FROM theater T";
-							$result = pg_query($db_theatres, $query);
-							while($row = pg_fetch_row($result)){
-								echo '<option value="'.$row[0].'">' .$row[0].' </option> ';
-							}
-							pg_close($db_theatres);
-						?>
-					</select>
+						</select>       
+					</div>
+					
+					<div class="form-group">
+						<button type="button" class="btn btn-default" id="search">Search</button>
+					</div>
 				</div>
 				
-				<ul  class="nav nav-tabs" role="tablist" id="myTab">
-					<li class="nav-item">
-						<a class="nav-link active" href="#theater" data-toggle="tab" role="tab" id="theater-tab" aria-controls="theater">Theatres</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#performances" data-toggle="tab" role="tab" id="perf-tab" aria-controls="performances">Performances</a>
-					</li>
-				</ul>
-				
-				<div class="tab-content" id="myTabContent">
-					<div class="tab-pane fade active in" id="theater" role="tabpanel" aria-expanded="true">
-						<div class="form-group">
-							<label for="theatre-select">Theatres:</label>
-							<select class="form-control" id="theatre-select" onchange="showActors(this.value)">
-
-							</select>
-						</div>
-					</div>
-					<div class="tab-pane fade" id="performances" role="tabpanel" aria-expanded="false">
-						<div class="form-group">
-							<label for="perf-select">Performances:</label>
-							<select class="form-control" id="perf-select" onchange="showActors(this.value)">
-
-							</select>
-						</div>
-					</div>
-				</div>
-				<div class="form-group row">
-					<label for="date-from" class="col-md-1">From:</label>
-					<div class="col-md-3">
-						<input type="text" id="date-from" class="form-control">
-					</div>
-					<label for="date-to" class="col-md-1">To:</label>
-					<div class="col-md-3">
-						<input type="text" id="date-to" class="form-control">
-					</div>
-				</div>
-				<div class="form-group">
-					<label>Weekdays:</label>
-					<label class="checkbox-inline"><input type="checkbox" value="">Mon</label>
-					<label class="checkbox-inline"><input type="checkbox" value="">Tue</label>
-					<label class="checkbox-inline"><input type="checkbox" value="">Wed</label>
-					<label class="checkbox-inline"><input type="checkbox" value="">Thu</label>
-					<label class="checkbox-inline"><input type="checkbox" value="">Fri</label>
-					<label class="checkbox-inline"><input type="checkbox" value="">Sat</label>
-					<label class="checkbox-inline"><input type="checkbox" value="">Sun</label>        
-				</div>
-				<div class="form-group">
-					<label for="member-select">Participated:</label>
-					<select multiple class="form-control" multiple id="member-select">
-						
-					</select>       
-				</div>
-				
-				<div class="form-group">
-					<button type="button" class="btn btn-default" id="search">Search</button>
+				<div>
+					<table class="table">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Date</th>
+							<th>Time</th>
+							<th>Theater</th>
+							<th>Price</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Hamlet</td>
+							<td>2016-11-04T00:00:00Z</td>
+							<td>0000-01-01T19:00:00Z</td>
+							<td>The Pushkin Theatre</td>
+							<td>800</td>
+							<td>
+								<button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">
+									About
+								</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+					
 				</div>
 			</div>
 			<div class="col-md-2"></div>
