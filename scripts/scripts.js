@@ -64,19 +64,36 @@ function showActorsInPerfomance(value) {
 	xmlhttp.send();
 }
 
-function addPerson() {
+function showPlaybill() {
+	var city = document.getElementById("city-select").value;
+	var len= document.getElementById("member-select").options.length;
+    var people = "";
+    for (var n = 0; n < len; n++)
+    {
+      if (document.getElementById("member-select").options[n].selected==true)
+      {
+       people= people + document.getElementById("member-select").options[n].value + "," ;
+      }
+    }
+	var dateFrom = document.getElementById("date-from").value;
+	var dateTo = document.getElementById("date-to").value;
+	people = people + ".";
+	var active = document.getElementsByClassName("active")[2];
+	var theatre = -1;
+	var performance = -1;
+	if(active.id == "theater")
+			theatre = document.getElementById("theatre-select").value;
+	if(active.id == "performances")
+			performance = document.getElementById("perf-select").value;
 	
-	var msg   = $('#addPerson').serialize();
-	
-	$.ajax({
-		type: 'POST',
-		url: 'addPerson.php',
-		data: msg,
-		success: function(data) {
-			$('.form-control').val("");
-		},
-		error:  function(xhr, str){
-			alert('Возникла ошибка: ' + xhr.responseCode);
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		if(this.readyState == 4 && this.status == 200){
+			alert(this.responseText);
+			document.getElementById("playbills").innerHTML = this.responseText;
 		}
-	});
+	};
+	xmlhttp.open("GET", "showPlaybill.php?c=" + city + "&t=" + theatre + 
+					"&p=" + performance + "&ppl=" + people  + "&dates=" + dateFrom + "&datef=" + dateTo, true);
+	xmlhttp.send();
 }
