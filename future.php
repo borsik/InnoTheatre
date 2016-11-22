@@ -130,34 +130,21 @@
 					</div>
 				</div>
 				
-				<div>
-					<table class="table">
-					<thead>
-						<tr>
-							<th>Name</th>
-							<th>Date</th>
-							<th>Time</th>
-							<th>Theater</th>
-							<th>Price</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>Hamlet</td>
-							<td>2016-11-04T00:00:00Z</td>
-							<td>0000-01-01T19:00:00Z</td>
-							<td>The Pushkin Theatre</td>
-							<td>800</td>
-							<td>
-								<button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">
-									About
-								</button>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-					
+			<div class="card-columns">
+				<div class="card card-block" style="width: 45rem;">
+					<h4 class="card-title">Hamlet</h4>
+					<p class="card-text">22.06.2016</p>
+					<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+					<p class="card-text"><small class="text-muted">The Bolshoi Theater</small></p>
 				</div>
+				
+				<div class="card card-block" style="width: 45rem;">
+					<h4 class="card-title">Hamlet</h4>
+					<p class="card-text">22.06.2016</p>
+					<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+					<p class="card-text"><small class="text-muted">The Bolshoi Theater</small></p>
+				</div>
+			</div>
 			</div>
 			<div class="col-md-2"></div>
 		</div>

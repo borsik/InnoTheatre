@@ -1,11 +1,9 @@
-
-$( function() {
-    $('#date-from').datepicker().datepicker("setDate", new Date());
-	$('#date-to').datepicker().datepicker("setDate", new Date(+new Date + 12096e5));
-$('#future-nav').click(function(){$("#future").hide();});
-  } );
+$(function() {
+    $('#date-from').datepicker({dateFormat: "dd.mm.yy"}).datepicker("setDate", new Date());
+	$('#date-to').datepicker({dateFormat: "dd.mm.yy"}).datepicker("setDate", new Date(+new Date + 12096e5));
+});
   
-jQuery(function () {
+jQuery(function() {
     jQuery('#myTab a:last').tab('show')
 });
 
@@ -64,4 +62,21 @@ function showActorsInPerfomance(value) {
 	};
 	xmlhttp.open("GET", "showPeopleInPerformance.php?t=" + value, true);
 	xmlhttp.send();
+}
+
+function addPerson() {
+	
+	var msg   = $('#addPerson').serialize();
+	
+	$.ajax({
+		type: 'POST',
+		url: 'addPerson.php',
+		data: msg,
+		success: function(data) {
+			$('.form-control').val("");
+		},
+		error:  function(xhr, str){
+			alert('Возникла ошибка: ' + xhr.responseCode);
+		}
+	});
 }
