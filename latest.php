@@ -30,13 +30,32 @@
 			<a class="navbar-brand" href="./index.php">Navbar</a>
 			<ul class="nav navbar-nav" id="navigation">
 				<li class="nav-item">
-					<a class="nav-link" href="./index.php">Home<span class="sr-only">(current)</span></a>
-				</li>
-				<li class="nav-item active">
-					<a class="nav-link" href="#future">Future events</a>
+					<a class="nav-link" href="./index.php">Home</a>
 				</li>
 				<li class="nav-item">
+					<a class="nav-link" href="./future.php">Future events</a>
+				</li>
+				<li class="nav-item active">
 					<a class="nav-link" href="./latest.php">Latest events</a>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav float-xs-right">
+				<li class="nav-item">
+					<select class="form-control" id="grade" name="grade">
+						<?php
+							$db_theatres = pg_connect("host=localhost port=5432 dbname=Theatres user=postgres password=1234");
+							
+							if(!$db_theatres){
+								echo'No connection :(';
+							}
+							$query = "SELECT login FROM Viewer";
+							$result = pg_query($db_theatres, $query);
+							while($row = pg_fetch_row($result)){
+								echo '<option value="'.$row[0].'">' .$row[0].' </option> ';
+							}
+							pg_close($db_theatres);
+						?>													
+					</select>
 				</li>
 			</ul>
 			
@@ -98,13 +117,13 @@
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="date-from" class="col-md-1">From:</label>
+					<label for="date-from2" class="col-md-1">From:</label>
 					<div class="col-md-3">
-						<input type="text" id="date-from" class="form-control">
+						<input type="text" id="date-from2" class="form-control">
 					</div>
-					<label for="date-to" class="col-md-1">To:</label>
+					<label for="date-to2" class="col-md-1">To:</label>
 					<div class="col-md-3">
-						<input type="text" id="date-to" class="form-control">
+						<input type="text" id="date-to2" class="form-control">
 					</div>
 				</div>
 				

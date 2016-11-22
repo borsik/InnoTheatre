@@ -3,6 +3,11 @@
 		$('#date-to').datepicker({dateFormat: "dd.mm.yy"}).datepicker("setDate", new Date(+new Date + 12096e5));
 		$('#date').datepicker({dateFormat: "dd.mm.yy"});
 	});
+	
+	jQuery(document).ready(function() {
+		$('#date-from2').datepicker({dateFormat: "dd.mm.yy", maxDate: "+0D"}).datepicker("setDate", new Date());
+		$('#date-to2').datepicker({dateFormat: "dd.mm.yy", maxDate: "+0D"}).datepicker("setDate", new Date(+new Date + 12096e5));
+	});
 	  
 	jQuery(document).ready(function() {
 		jQuery('#myTab a:last').tab('show')
