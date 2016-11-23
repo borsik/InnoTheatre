@@ -1214,3 +1214,12 @@ INSERT INTO a_p (sid, pid) VALUES (29, 178);
 INSERT INTO a_p (sid, pid) VALUES (29, 179);
 INSERT INTO a_p (sid, pid) VALUES (29, 180);
 INSERT INTO a_p (sid, pid) VALUES (29, 181);
+
+
+-- Вставка юзеров
+
+INSERT INTO Viewer (login, password, rating) VALUES ('Maksim' , 'difficultpassword' , 1); 
+INSERT INTO Viewer (login, password, rating) VALUES ('Olzhas' , 'Uralsk' , 1); 
+INSERT INTO Viewer (login, password, rating) VALUES ('Bogdan' , 'palets' , 1); 
+INSERT INTO Viewer (login, password, rating) VALUES ('Roman' , 'introvert' , 1); 
+INSERT INTO Viewer (login, password, rating) VALUES ('Mohamad' , 'theatresthebest' , 1); 
