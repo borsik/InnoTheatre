@@ -67,6 +67,9 @@
 					<li class="nav-item">
 						<a class="nav-link" href="#performances" data-toggle="tab" role="tab" aria-controls="performances">Performances</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#theatres" data-toggle="tab" role="tab" aria-controls="theatres">Theatres</a>
+					</li>
 				</ul>
 				
 				<div class="tab-content" id="myTabContent">
@@ -171,6 +174,27 @@
 						</div>
 					</div>
 					
+					<div class="tab-pane fade" id="theatres" role="tabpanel" aria-expanded="false">
+						<div class="form-group">
+							<label for="theatres">Theatres:</label>
+							<select class="form-control" name="theatres"  onchange="showTheaterGrade(this.value)">
+								<?php
+										$db_theatres = pg_connect("host=localhost port=5432 dbname=Theatres user=postgres password=1234");
+										
+										if(!$db_theatres){
+											echo'No connection :(';
+										}									
+										$query = "SELECT tid, name FROM Theater";
+										$result = pg_query($db_theatres, $query);
+										while($row = pg_fetch_row($result)){
+											echo '<option value="'.$row[0].'">' .$row[1]. ' </option> ';
+										}
+										pg_close($db_theatres);
+									?>		
+							</select>
+						</div>
+					</div>
+					
 				</div>
 				
 				<div id="grade">
@@ -238,6 +262,16 @@
 			xmlhttp.send();
 		}
 	
+		function showTheaterGrade(value){
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if(this.readyState == 4 && this.status == 200){
+					document.getElementById("grade").innerHTML = this.responseText;
+				}
+			};
+			xmlhttp.open("GET", "showTheaterGrade.php?t=" + value, true);
+			xmlhttp.send();
+		}
 	</script>
   </body>
 </html>
