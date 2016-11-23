@@ -147,3 +147,14 @@ function showPlaybill() {
 					"&p=" + performance + "&ppl=" + people  + "&dates=" + dateFrom + "&datef=" + dateTo, true);
 	xmlhttp.send();
 }
+
+function showActorGrade(value){
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		if(this.readyState == 4 && this.status == 200){
+			document.getElementById("perf-select").innerHTML = this.responseText;
+		}
+	};
+	xmlhttp.open("GET", "showActorGrade.php?t=" + value, true);
+	xmlhttp.send();
+}
