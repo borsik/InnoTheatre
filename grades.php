@@ -160,7 +160,7 @@
 										if(!$db_theatres){
 											echo'No connection :(';
 										}									
-										$query = "SELECT per_id, per_name FROM Performance";
+										$query = "SELECT per_id, name FROM Performance";
 										$result = pg_query($db_theatres, $query);
 										while($row = pg_fetch_row($result)){
 											echo '<option value="'.$row[0].'">' .$row[1]. ' </option> ';
