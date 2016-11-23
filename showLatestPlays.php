@@ -94,7 +94,26 @@
 					<p class="card-text">'.$row[3].'</p>
 					<p class="card-text">Price: '.$row[4].'</p>
 					<p class="card-text"><small class="text-muted">'.$row[5].'</small></p> ';
-		$return = $return.'</div> <div class="card card-block" style="width: 45rem;">';
+		$return = $return.' 
+		<div class="form-group row">
+		<label for="rate" class="col-form-label">Rate this:</label>
+		<select class="form-control" name="rate" id="play'.$row[6].'">
+		<option>1</option>
+		<option>2</option>
+		<option>3</option>
+		<option>4</option>
+		<option>5</option>
+		<option>6</option>
+		<option>7</option>
+		<option>8</option>
+		<option>9</option>
+		<option>10</option>
+		</select>
+		<button type="button" class="btn btn-secondary" 
+				onclick="rate('.$row[6].')">Rate</button>
+		</div>
+		<div id="response'.$row[6].'"> </div>
+		</div> <div class="card card-block" style="width: 45rem;">';
 		
 	}
 	$return = $return.'</div>';

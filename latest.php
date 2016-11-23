@@ -38,13 +38,10 @@
 				<li class="nav-item active">
 					<a class="nav-link" href="./latest.php">Latest events</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="./grades.php">Grades</a>
-				</li>
 			</ul>
 			<ul class="nav navbar-nav float-xs-right">
 				<li class="nav-item">
-					<select class="form-control" id="grade" name="grade">
+					<select class="form-control" id="login" name="grade">
 						<?php
 							$db_theatres = pg_connect("host=localhost port=5432 dbname=Theatres user=postgres password=1234");
 							
@@ -138,7 +135,7 @@
 				</div>
 				
 				<div class="form-group">
-					<button type="button" class="btn btn-default" id="search" onclick="showPlaybill()" >Search</button>
+					<button type="button" class="btn btn-default" id="search" onclick="showLatestPlays()" >Search</button>
 				</div>
 			
 			
