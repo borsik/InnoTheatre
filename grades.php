@@ -89,8 +89,8 @@
 					</div>
 					<div class="tab-pane fade" id="producer" role="tabpanel" aria-expanded="false">
 						<div class="form-group">
-							<label for="perf-select">Producers:</label>
-							<select class="form-control" name="producer">
+							<label for="producer">Producers:</label>
+							<select class="form-control" name="producer" onchange="showProducerGrade(this.value)">
 								<?php
 										$db_theatres = pg_connect("host=localhost port=5432 dbname=Theatres user=postgres password=1234");
 										
@@ -109,8 +109,8 @@
 					</div>
 					<div class="tab-pane fade" id="scenarists" role="tabpanel" aria-expanded="false">
 						<div class="form-group">
-							<label for="perf-select">Scenarists:</label>
-							<select class="form-control" name="scenarists">
+							<label for="scenarists">Scenarists:</label>
+							<select class="form-control" name="scenarists" onchange="showScenaristGrade(this.value)">
 									<?php
 										$db_theatres = pg_connect("host=localhost port=5432 dbname=Theatres user=postgres password=1234");
 										
@@ -129,8 +129,8 @@
 					</div>
 					<div class="tab-pane fade" id="musicians" role="tabpanel" aria-expanded="false">
 						<div class="form-group">
-							<label for="perf-select">Musicians:</label>
-							<select class="form-control" name="musicians">
+							<label for="musicians">Musicians:</label>
+							<select class="form-control" name="musicians"  onchange="showMusicianGrade(this.value)">
 								<?php
 										$db_theatres = pg_connect("host=localhost port=5432 dbname=Theatres user=postgres password=1234");
 										
@@ -149,19 +149,60 @@
 					</div>
 				</div>
 				
-				<div class="form-group">
-					<button type="button" class="btn btn-default" id="search" onclick="showGrade()" >Search</button>
+				<div id="grade">
+					
 				</div>
-			
-			
-			<div class="" id="playbills">
 				
-			</div>
 			</div>
 			<div class="col-md-2"></div>
 		</div>
 	
 	</div>
-    
+    <script>
+		function showActorGrade(value){
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if(this.readyState == 4 && this.status == 200){
+					document.getElementById("grade").innerHTML = this.responseText;
+				}
+			};
+			xmlhttp.open("GET", "showActorGrade.php?t=" + value, true);
+			xmlhttp.send();
+		}
+		
+		function showMusicianGrade(value){
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if(this.readyState == 4 && this.status == 200){
+					document.getElementById("grade").innerHTML = this.responseText;
+				}
+			};
+			xmlhttp.open("GET", "showMusicianGrade.php?t=" + value, true);
+			xmlhttp.send();
+		}
+		
+		function showProducerGrade(value){
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if(this.readyState == 4 && this.status == 200){
+					document.getElementById("grade").innerHTML = this.responseText;
+				}
+			};
+			xmlhttp.open("GET", "showProducerGrade.php?t=" + value, true);
+			xmlhttp.send();
+		}
+		
+		function showScenaristGrade(value){
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if(this.readyState == 4 && this.status == 200){
+					document.getElementById("grade").innerHTML = this.responseText;
+				}
+			};
+			xmlhttp.open("GET", "showScenaristGrade.php?t=" + value, true);
+			xmlhttp.send();
+		}
+	
+	</script>
   </body>
 </html>
