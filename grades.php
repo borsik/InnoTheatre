@@ -64,6 +64,9 @@
 					<li class="nav-item">
 						<a class="nav-link" href="#musicians" data-toggle="tab" role="tab" aria-controls="musicians">Musicians</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#performances" data-toggle="tab" role="tab" aria-controls="performances">Performances</a>
+					</li>
 				</ul>
 				
 				<div class="tab-content" id="myTabContent">
@@ -147,6 +150,27 @@
 							</select>
 						</div>
 					</div>
+					<div class="tab-pane fade" id="performances" role="tabpanel" aria-expanded="false">
+						<div class="form-group">
+							<label for="performances">Performances:</label>
+							<select class="form-control" name="performances"  onchange="showPerformanceGrade(this.value)">
+								<?php
+										$db_theatres = pg_connect("host=localhost port=5432 dbname=Theatres user=postgres password=1234");
+										
+										if(!$db_theatres){
+											echo'No connection :(';
+										}									
+										$query = "SELECT per_id, per_name FROM Performance";
+										$result = pg_query($db_theatres, $query);
+										while($row = pg_fetch_row($result)){
+											echo '<option value="'.$row[0].'">' .$row[1]. ' </option> ';
+										}
+										pg_close($db_theatres);
+									?>		
+							</select>
+						</div>
+					</div>
+					
 				</div>
 				
 				<div id="grade">
@@ -200,6 +224,17 @@
 				}
 			};
 			xmlhttp.open("GET", "showScenaristGrade.php?t=" + value, true);
+			xmlhttp.send();
+		}
+		
+		function showPerformanceGrade(value){
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if(this.readyState == 4 && this.status == 200){
+					document.getElementById("grade").innerHTML = this.responseText;
+				}
+			};
+			xmlhttp.open("GET", "showPerformanceGrade.php?t=" + value, true);
 			xmlhttp.send();
 		}
 	

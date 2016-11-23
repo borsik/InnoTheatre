@@ -10,7 +10,7 @@
 	});
 	  
 	jQuery(document).ready(function() {
-		jQuery('#myTab a:last').tab('show')
+		jQuery('#myTab a:first').tab('show')
 	});
 
 	jQuery(document).ready(function($) {
