@@ -7,8 +7,11 @@
 		echo'No connection :(';
 	}
 	$query = "SELECT grade
-			FROM Performance
-			WHERE per_id='".$t."'";
+			FROM PerfomanceGrades
+			WHERE per_id=".$t."
+			AND gdate >= ALL (SELECT g.gdate 
+								FROM PerfomanceGrades g
+								WHERE g.per_id =".$t." )";
 	$result = pg_query($db_theatres, $query);
 	while($row = pg_fetch_row($result)){
 		$return = $return.'<h1>' .$row[0].' </h1> ';
