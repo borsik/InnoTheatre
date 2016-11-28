@@ -41,6 +41,9 @@
 				<li class="nav-item">
 					<a class="nav-link" href="./grades.php">Grades</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="./add.php">Add</a>
+				</li>
 			</ul>
 			<ul class="nav navbar-nav float-xs-right">
 				<li class="nav-item">

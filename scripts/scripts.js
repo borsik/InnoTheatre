@@ -98,6 +98,22 @@
 			}
 		});
 	}
+	
+	function addUser() {
+		var msg = $('#addUser').serialize();
+		
+		$.ajax({
+			type: 'POST',
+			url: 'addUser.php',
+			data: msg,
+			success: function(data) {
+				$('.form-control').val("");
+			},
+			error:  function(xhr, str){
+				alert('Возникла ошибка: ' + xhr.responseCode);
+			}
+		});
+	}
 
 	function addPlay() {
 		var msg = $('#addPlay').serialize();

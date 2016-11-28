@@ -18,11 +18,35 @@
 </head>
 <body>
 
+	<div class="container">
+	  <nav class="navbar navbar-light bg-faded">
+			<a class="navbar-brand" href="./index.php">Navbar</a>
+			<ul class="nav navbar-nav" id="navigation">
+				<li class="nav-item">
+					<a class="nav-link" href="./index.php">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="./future">Future events</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="./latest.php">Latest events</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="./grades.php">Grades</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="./add.php">Add</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
 
-<div class="container-fluid">
+
+<div class="container" id="add">
     <div class="row text-left">
         <div class="col-md-3"></div>
         <div class="col-md-6">
+		
 			<div class="card card-block" id="addPersonCard">
 				<form method="post" id="addPerson" action="javascript:void(null);" onsubmit="addPerson()" id="addPerson">
 					<h4 class="card-title">Add person</h4>
@@ -159,6 +183,30 @@
 						
 						<div class="form-group">
 							<button type="submit" class="btn btn-primary" id="add">Add play</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			
+			<div class="card card-block" id="addUserCard">
+				<form method="post" id="addUser" action="javascript:void(null);" onsubmit="addUser()" id="addUser">
+					<h4 class="card-title">Add user</h4>
+					<div class="form-group">
+						<div class="form-group row">
+							<label for="login" class="col-xs-2 col-form-label">Login:</label>                    
+							<div class="col-xs-10">
+								<input type="text" class="form-control" id="login" name="login">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="password" class="col-xs-2 col-form-label">Password:</label>
+							<div class="col-xs-10">
+								<input type="text" class="form-control" id="password" name="password">
+							</div>
+						</div>			
+	
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary" id="add">Add user</button>
 						</div>
 					</div>
 				</form>
